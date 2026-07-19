@@ -1,14 +1,14 @@
-# 🛒 E-commerce Sales Analysis | Python EDA
+# E-commerce Sales Analysis | Python EDA
 
-## 📌 Project Overview
+## Project Overview
 
-This project focuses on analyzing an e-commerce sales dataset using Python to uncover business insights related to sales performance, profitability, customer behavior, product categories, and operational efficiency.
+This project focuses on analyzing an e-commerce sales dataset using Python to uncover insights related to sales performance, profitability, customer behavior, and operational efficiency.
 
-The project includes data cleaning, preprocessing, feature engineering, exploratory data analysis (EDA), and visualization to understand the factors influencing revenue and profit.
+The workflow includes data cleaning, preprocessing, feature engineering, exploratory data analysis (EDA), and visualization to understand the key factors affecting revenue and profit.
 
----
+The dataset used in this project is a synthetic dataset generated using ChatGPT and designed to simulate real-world e-commerce transaction data with intentional data quality issues for practicing data cleaning and analysis.
 
-## 🛠️ Tools & Technologies
+## Tools & Technologies
 
 - Python
 - Pandas
@@ -17,56 +17,34 @@ The project includes data cleaning, preprocessing, feature engineering, explorat
 - Seaborn
 - Jupyter Notebook
 
----
-
-## 📂 Dataset Overview
-
-The dataset contains e-commerce transaction details including:
-
-- Order Information
-- Customer Details
-- Product Categories
-- Pricing Information
-- Discounts
-- Payment Methods
-- Customer Ratings
-- Return Status
-- Delivery Information
-
----
-
-# 🔍 Data Cleaning & Preparation
+## Data Cleaning & Preparation
 
 The raw dataset contained multiple inconsistencies which were handled before analysis:
 
-✔ Converted date columns into datetime format  
-✔ Removed currency symbols and converted price columns into numeric format  
-✔ Standardized inconsistent categorical values  
-✔ Handled missing values  
-✔ Corrected invalid age and rating values  
-✔ Processed discount values into numerical format  
-✔ Created new business metrics for analysis  
+- Converted date columns into datetime format
+- Removed currency symbols and converted price columns into numeric format
+- Standardized inconsistent categorical values
+- Handled missing values
+- Corrected invalid age and customer rating values
+- Processed discount values into numerical format
+- Created new business metrics for analysis
 
----
+## Feature Engineering
 
-# ⚙️ Feature Engineering
+Created new analytical columns:
 
-New analytical columns were created:
+- Revenue
+- Profit
+- Profit Margin %
+- Delivery Days
+- Order Year
+- Order Month
 
-- **Revenue**
-- **Profit**
-- **Profit Margin %**
-- **Delivery Days**
-- **Order Year**
-- **Order Month**
+These features helped analyze business performance beyond the original transactional data.
 
-These features helped analyze business performance beyond the raw transactional data.
+## Exploratory Data Analysis
 
----
-
-# 📊 Exploratory Data Analysis
-
-## Univariate Analysis
+### Univariate Analysis
 
 Analyzed individual variables to understand:
 
@@ -76,9 +54,7 @@ Analyzed individual variables to understand:
 - Customer ratings
 - Order quantity patterns
 
----
-
-## Bivariate Analysis
+### Bivariate Analysis
 
 Explored relationships between two variables:
 
@@ -88,9 +64,7 @@ Explored relationships between two variables:
 - Discount vs Profit
 - Return Status distribution
 
----
-
-## Multivariate Analysis
+### Multivariate Analysis
 
 Analyzed multiple variables together:
 
@@ -99,76 +73,58 @@ Analyzed multiple variables together:
 - Category + Payment Method + Revenue
 - Correlation analysis between numerical variables
 
----
+## Key Insights
 
-# 📈 Key Insights
+### Product Performance
 
-### 🏆 Product Performance
+- Electronics is the strongest category overall, with the highest order count, revenue, and profit. This indicates that sales volume is successfully translating into earnings rather than only generating high turnover.
 
-- **Electronics is the strongest category overall**, generating the highest order count, revenue, and profit. This indicates that sales volume is successfully converting into earnings rather than only creating high turnover.
+- Kolkata is the top-performing city across categories, with the largest performance gap observed in Electronics, showing that city performance is concentrated rather than evenly distributed.
 
-- **Kolkata is the top-performing city across categories**, with the largest performance difference observed in Electronics, showing that city performance is concentrated rather than evenly distributed.
+### Profitability Analysis
 
----
+- Selling Price is the strongest driver of Profit with a correlation of 0.78, supported by a near-linear scatter relationship.
 
-### 💰 Profitability Analysis
+- Cost Price negatively impacts Profit with a correlation of -0.63, as expected.
 
-- **Selling Price is the strongest driver of Profit** with a correlation of **0.78**, supported by a near-linear scatter relationship.
+- Discount levels do not appear to reduce profit. However, this may be influenced by higher-priced products receiving larger discounts rather than discounts directly increasing profitability.
 
-- **Cost Price negatively impacts Profit** with a correlation of **-0.63**, as expected.
+- Customer Age, Quantity, and Customer Rating show minimal correlation with Profit, indicating that profitability is mainly driven by pricing factors rather than customer demographics.
 
-- Discount levels do not show a negative impact on profit. However, this may be influenced by higher-priced products receiving larger discounts rather than discounts directly improving profitability.
-
-- Customer Age, Quantity, and Customer Rating show minimal correlation with Profit, indicating that profitability is primarily driven by pricing factors rather than customer demographics.
-
----
-
-### 📦 Order-Level Profitability
+### Order-Level Profitability
 
 - Median order profit is only slightly positive (~₹500–600).
 
-- The middle 50% of orders range approximately between **-₹700 and +₹1800**, indicating that many individual transactions are loss-making despite strong overall category performance.
+- The middle 50% of orders range approximately between -₹700 and +₹1800, showing that many individual orders are loss-making despite strong overall category-level performance.
 
----
+### Sales Trend Analysis
 
-### 📅 Sales Trend Analysis
+- Revenue fluctuates month-to-month rather than showing steady growth.
 
-- Revenue fluctuates month-to-month rather than showing consistent growth.
+- Revenue peaks in February (~₹1.8M) and reaches the lowest point in October (~₹1.42M), suggesting seasonal or event-driven demand patterns.
 
-- Highest revenue was observed in **February (~₹1.8M)**, while **October recorded the lowest (~₹1.42M)**, suggesting demand is influenced by seasonal or event-based factors.
+### Operational Analysis
 
----
-
-### 🚚 Operational Analysis
-
-- Delivery days are distributed evenly between **0 and 8 days**, indicating no major systematic delivery delay issue.
+- Delivery Days are evenly distributed between 0 and 8 days, indicating no major systemic shipping delay issue.
 
 - Return counts increase proportionally with order volume, with no category showing an unusually high return rate.
 
----
+### Data Quality Observation
 
-### ⚠️ Data Quality Observation
+- Around 39% of rows contained Cost Price higher than Selling Price, resulting in unrealistic negative profit margins.
 
-- Around **39% of rows contained Cost Price higher than Selling Price**, creating unrealistic negative profit margins.
+- This was identified as a synthetic data quality issue rather than a genuine business pattern.
 
-- This was identified as a **data quality issue** rather than a genuine business pattern.
+- These records were excluded from margin analysis instead of being artificially corrected.
 
-- These records were excluded from margin-based analysis instead of being artificially corrected.
+## Jupyter Notebook
 
----
+[View Complete EDA Notebook](9.6%20EDA6Ecommerce.ipynb)
 
-# 📓 Notebook
+## Conclusion
 
-Complete EDA notebook:
+The analysis shows that category performance and pricing strategy are the major drivers of profitability. Electronics dominates overall performance, while city-level differences and pricing relationships provide useful insights for improving business decisions.
 
-[View E-commerce EDA Notebook](9.6%20EDA6Ecommerce.ipynb)
+Project workflow:
 
----
-
-# 📌 Conclusion
-
-The analysis shows that product pricing strategy and category performance are the major drivers of profitability. Electronics dominates overall business performance, while city-level differences and pricing relationships provide important insights for improving sales strategy.
-
-The project demonstrates an end-to-end analytics workflow:
-
-**Raw Data → Data Cleaning → Feature Engineering → Exploratory Analysis → Business Insights**
+Raw Data → Data Cleaning → Feature Engineering → Exploratory Analysis → Business Insights
